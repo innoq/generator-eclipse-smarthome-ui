@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="eshUiApp">
+<head>
+
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+  <title><%= uiName %></title>
+
+  <link type="text/css" href="css/main.css" rel="stylesheet">
+
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+</head>
+<body>
+
+  <section>
+    <ng-view></ng-view>
+  </section>
+
+
+  <footer>
+    Made with <a href="https://github.com/innoq/generator-eclipse-smarthome-ui">eclipse-smarthome-ui</a> generator.
+  </footer>
+  </div>
+
+  <!-- lib js files -->
+  <script src="../node_modules/jquery/dist/jquery.js"></script>
+  <script src="../node_modules/angular/angular.js"></script>
+  <!-- end lib js files -->
+
+  <!-- custom js files -->
+  <script src="js/app.js"></script>
+  <script src="js/app-constants.js"></script>
+  <script src="js/app-routes.js"></script>
+  <script src="js/components.js"></script>
+  <!-- end custom js files -->
+</body>
+</html>

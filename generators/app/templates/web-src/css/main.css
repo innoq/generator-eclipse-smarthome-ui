@@ -1,0 +1,44 @@
+body {
+  background-color: #333;
+  font-family: sans-serif;
+  font-size: 18pt;
+  color: white;
+}
+
+.Aligner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Aligner-item {
+  width: 700px;
+  height: 700px;
+  position: relative;
+}
+
+.dragger {
+  position: relative;
+  left: 350px;
+  top: calc(350px + 120px);
+  width: 120px;
+  height: 120px;
+  border-radius: 0 60px 60px;
+  border: 2px solid #999;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.dragger ol {
+  display: block;
+  margin: 0;
+  padding: 15px 25px 15px;
+  text-align: right;
+  color: black;
+  list-style: none;
+  background: linear-gradient(to bottom right, hsla(0,0%,60%,1) 0%, hsla(0,0%,100%,0) 40%);
+}
+
+.dragger .h:after { content: ' H'; font-size: .7em; }
+.dragger .s:after { content: ' S'; font-size: .7em; }
+.dragger .l:after { content: ' L'; font-size: .7em; }

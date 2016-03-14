@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-Name: <%= uiName %>
+Bundle-Version: 0.0.0.qualifier
+Bundle-ManifestVersion: 2
+Import-Package: org.osgi.service.component,
+ org.osgi.service.http,
+ org.slf4j
+Bundle-SymbolicName: <%= bundleName %>;singleton:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Service-Component: OSGI-INF/*
+Bundle-ClassPath: patch/,.
