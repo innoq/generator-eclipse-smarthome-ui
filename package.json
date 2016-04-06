@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "description": "Eclipse SmartHome Userinterface generator",
   "homepage": "https://eclipse.org/smarthome",
-  "repository": "https://github.com/innoq/generator-eclipse-smarthome-ui",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/innoq/generator-eclipse-smarthome-ui"
+  },
   "author": {
     "name": "Sebastian Janzen",
     "email": "sebastian.janzen@innoq.com",
@@ -48,7 +51,6 @@
       "mocha": true
     }
   },
-  "repository": "innoq/generator-eclipse-smarthome-ui",
   "scripts": {
     "prepublish": "gulp prepublish",
     "test": "gulp"
