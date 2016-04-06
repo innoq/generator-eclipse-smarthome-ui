@@ -1,6 +1,6 @@
 'use strict';
 
-var angularFilesort = require('gulp-angular-filesort'),
+const angularFilesort = require('gulp-angular-filesort'),
   browserSync = require('browser-sync'),
   concat = require('gulp-concat'),
   del = require('del'),
@@ -8,16 +8,17 @@ var angularFilesort = require('gulp-angular-filesort'),
   ngAnnotate = require('gulp-ng-annotate'),
   proxyMiddleware = require('http-proxy-middleware'),
   rename = require("gulp-rename"),
-  uglify = require('gulp-uglify');
+  uglify = require('gulp-uglify'),
+  babel = require('gulp-babel');
 
-var paths = {
+const babelOptions = {presets: ['es2015']};
+
+const paths = {
   scripts: [
     './web-src/js/app.js',
-    './web-src/js/constants.js',
+    './web-src/js/app-*.js',
     './web-src/js/extensions.js',
-    './web-src/js/main.js',
-    './web-src/js/shared.properties.js',
-    './web-src/js/controllers.module.js'
+    './web-src/js/components.js'
   ],
   static: [
     './web-src/css/*.css',
@@ -25,11 +26,8 @@ var paths = {
     './web-src/index.html'
   ],
   concat: [{
-    'src': './web-src/js/services*.js',
-    'name': 'services.js'
-  }, {
-    'src': './web-src/js/controllers*.js',
-    'name': 'controllers.js'
+    'src': './web-src/components/*/*.js',
+    'name': 'components.js'
   }, {
     'src': [
       './node_modules/angular-route/angular-route.min.js',
@@ -54,10 +52,11 @@ var paths = {
 };
 
 gulp.task('default', ['build']);
-gulp.task('build', ['uglify', 'concat', 'copyCSSLibs', 'copyFontLibs', 'copyJSLibs', 'copyStatic', 'copyPartials']);
+gulp.task('build', ['uglify', 'concat', 'copyCSSLibs', 'copyFontLibs', 'copyJSLibs', 'copyStatic']);
 
 gulp.task('uglify', function () {
   return gulp.src(paths.scripts)
+    .pipe(babel(babelOptions))
     .pipe(ngAnnotate())
     .pipe(uglify())
     .pipe(gulp.dest('./web/js/'));
@@ -66,11 +65,6 @@ gulp.task('uglify', function () {
 gulp.task('copyStatic', function () {
   return gulp.src(paths.static, {base: 'web-src'})
     .pipe(gulp.dest('./web'));
-});
-
-gulp.task('copyPartials', function () {
-  return gulp.src(paths.partials)
-    .pipe(gulp.dest('./web/partials'));
 });
 
 gulp.task('copyJSLibs', function () {
