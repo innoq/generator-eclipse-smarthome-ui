@@ -3,7 +3,7 @@
 import angular from 'angular';
 import pageDemo from './pageDemo.js';
 
-export default angular
+module.exports = angular
   .module('pages', [
     pageDemo.name
   ])

@@ -1,3 +1,3 @@
 'use strict';
 
-import '../components/colorPicker/component.js';
+require('../components/colorPicker/component.js');

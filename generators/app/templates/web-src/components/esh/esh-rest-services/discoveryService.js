@@ -1,4 +1,4 @@
-export default angular.module('esh.rest-services')
+module.exports = angular.module('esh.rest-services')
 
     .factory('discoveryService', function ($resource) {
         return $resource('/rest/discovery', {}, {

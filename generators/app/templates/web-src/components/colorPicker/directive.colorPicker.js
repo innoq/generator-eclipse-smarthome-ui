@@ -1,6 +1,6 @@
 'use strict';
 
-export default angular
+module.exports = angular
   .module('colorPicker')
   .directive('colorPicker', ($log, itemService, colorUtils) => {
     return {

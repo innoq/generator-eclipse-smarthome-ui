@@ -3,7 +3,7 @@
 import angular from 'angular';
 
 // TODO Split this up to pageDemo.html
-export default angular
+module.exports = angular
   .module('pages')
   .config(($routeProvider) => {
     $routeProvider.when('/colorPicker', {

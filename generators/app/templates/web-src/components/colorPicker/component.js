@@ -1,8 +1,9 @@
 'use strict';
 
-import angular from 'angular';
-import 'directive.colorPicker.js';
+const angular = require('angular');
 
-export default angular
+require('directive.colorPicker.js');
+
+module.exports = angular
     .module('colorPicker', [])
 ;

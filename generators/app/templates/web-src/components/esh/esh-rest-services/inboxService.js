@@ -1,4 +1,4 @@
-export default angular.module('esh.rest-services')
+module.exports = angular.module('esh.rest-services')
 
     .factory('inboxService', function ($resource) {
         return $resource('/rest/inbox', {}, {

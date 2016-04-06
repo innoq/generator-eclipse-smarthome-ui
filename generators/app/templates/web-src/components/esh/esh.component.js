@@ -1,9 +1,9 @@
 'use strict';
 
-import angular from 'angular';
-import restServices from './esh-rest-services/component.js';
+const angular = require('angular');
+const restServices = require('./esh-rest-services/component.js');
 
-export default angular
+module.exports = angular
   .module('esh', [
     'ngResource',
     restServices.name

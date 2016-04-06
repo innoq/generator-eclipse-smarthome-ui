@@ -1,17 +1,17 @@
 'use strict';
 
-import bindingService from './bindingService';
-import discoveryService from './discoveryService.js';
-import groupSetupService from './groupSetupService.js';
-import inboxService from './inboxService.js';
-import itemService from './itemService.js';
-import labelSetupService from './labelSetupService.js';
-import linkService from './linkService.js';
-import thingService from './thingService.js';
-import thingSetupService from './thingSetupService.js';
-import thingTypeService from './thingTypeService.js';
+const bindingService = require('./bindingService');
+const discoveryService = require('./discoveryService.js');
+const groupSetupService = require('./groupSetupService.js');
+const inboxService = require('./inboxService.js');
+const itemService = require('./itemService.js');
+const labelSetupService = require('./labelSetupService.js');
+const linkService = require('./linkService.js');
+const thingService = require('./thingService.js');
+const thingSetupService = require('./thingSetupService.js');
+const thingTypeService = require('./thingTypeService.js');
 
-export default angular.module('esh.rest-services', [
+module.exports = angular.module('esh.rest-services', [
     bindingService.name,
     discoveryService.name,
     groupSetupService.name,

@@ -1,7 +1,7 @@
 'use strict';
 
 
-export default angular.module('esh.rest-services')
+module.exports = angular.module('esh.rest-services')
 
     .factory('groupSetupService', function ($resource) {
         return $resource('/rest/setup/groups', {}, {
