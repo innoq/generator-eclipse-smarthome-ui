@@ -1,10 +1,9 @@
 'use strict';
-var yeoman = require('yeoman-generator');
-var chalk = require('chalk');
-var yosay = require('yosay');
-var glob = require('glob');
-var DOMParser = require('xmldom').DOMParser;
-var XMLSerializer = require('xmldom').XMLSerializer;
+
+const yeoman = require('yeoman-generator');
+const chalk = require('chalk');
+const yosay = require('yosay');
+const glob = require('glob');
 
 function capitalize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -13,7 +12,6 @@ function capitalize(string) {
 module.exports = yeoman.generators.Base.extend({
 
   initializing: function () {
-    this.conflicter.force = true;
     this.log(yosay(
       'Welcome to the incredible ' + chalk.blue('Eclipse SmartHome UI') + ' generator!'
     ));
@@ -23,10 +21,16 @@ module.exports = yeoman.generators.Base.extend({
       this.log('Strg+C here and go to '+ chalk.red('extensions/ui') +' (ESH) or ' + chalk.red('addons/ui') +
         ' (OH2) to not get this msg.');
     }
+    this.props = {};
+    this.composeWith('eclipse-smarthome-ui:pom', {options:this.props});
+  },
+
+  subgenerators_read: function () {
+    this.conflicter.force = true;
   },
 
   prompting: {
-    promptUiNameAndAppClass: function UiNameAndAppClass() {
+    promptUiNameAndAppClass: function () {
       var done = this.async();
       var prompts = [{
         type: 'input',
@@ -35,9 +39,8 @@ module.exports = yeoman.generators.Base.extend({
         default: 'MyUI'
       }];
       this.prompt(prompts, function(props) {
-        props.uiName = props.uiName.replace('"', '').replace(/ui/ig, '');
-        props.appClassName = capitalize(props.uiName).replace(/\s/g, '') + 'App';
-        this.props = props;
+        this.props.uiName = props.uiName.replace('"', '').replace(/ui/ig, '');
+        this.props.appClassName = capitalize(props.uiName).replace(/\s/g, '') + 'App';
         done();
       }.bind(this));
     },
@@ -113,28 +116,7 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   install: function () {
-    process.chdir(this.props.bundleName);
-    this.npmInstall();
-    process.chdir('..');
-
-
-    if (!this.fs.exists('pom.xml')) {
-      this.log(chalk.yellow('No parent pom.xml found, not modifiefing that.'));
-      return;
-    }
-    var pomString = this.fs.read('pom.xml');
-    var pom = new DOMParser().parseFromString(pomString);
-    var modules = pom.getElementsByTagName('modules');
-    if (modules.length !== 1) {
-      this.log('Found pom.xml, but it may contain more than one modules node. Strange!');
-    } else {
-      var uiModule = pom.createElement('module');
-      uiModule.textContent = this.props.bundleName;
-      modules[0].appendChild(uiModule);
-    }
-    var serializer = new XMLSerializer();
-    this.fs.write('pom.xml', serializer.serializeToString(pom));
-    this.log('Added module to pom.xml.');
+    this.npmInstall(null, {cwd:'./'+this.props.bundleName});
   },
 
   end: function () {
