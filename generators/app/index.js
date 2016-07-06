@@ -4,6 +4,7 @@ const yeoman = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
 const glob = require('glob');
+const path = require('path');
 
 function capitalize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -16,7 +17,9 @@ module.exports = yeoman.generators.Base.extend({
       'Welcome to the incredible ' + chalk.blue('Eclipse SmartHome UI') + ' generator!'
     ));
 
-    if (this.appname !== 'ui') {
+    let targetFolderEnding = 'extensions' + path.sep + 'ui';
+
+    if (path.resolve().indexOf(targetFolderEnding) < 0) {
       this.log(chalk.red('It does not look that you\'re in the correct ESH folder.'));
       this.log('Strg+C here and go to '+ chalk.red('extensions/ui') +' (ESH) or ' + chalk.red('addons/ui') +
         ' (OH2) to not get this msg.');
