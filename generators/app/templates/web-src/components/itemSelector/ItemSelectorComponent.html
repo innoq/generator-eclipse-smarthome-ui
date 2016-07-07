@@ -1,0 +1,6 @@
+<form>
+  <label>Select a Color Item:</label>
+  <select name="repeatSelect" ng-model="data.selection">
+    <option ng-repeat="option in data.items track by option.name" value="{{option.name}}">{{option.label || option.name}}</option>
+  </select>
+</form>

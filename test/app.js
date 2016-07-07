@@ -2,17 +2,15 @@
 var path = require('path');
 var assert = require('yeoman-assert');
 var helpers = require('yeoman-generator').test;
-//var fs = require('fs-extra');
-
 
 describe('generator-eclipse-smarthome-ui:app', function () {
 
   before(function (done) {
     helpers.run(path.join(__dirname, '../generators/app'))
-      // TODO: Does not work, hangs on requiring fs-extra above
-      //.inTmpDir(function (dir) {
-      //  fs.copySync(path.join(__dirname, 'parent-pom.xml'), path.join(dir, 'pom.xml'));
-      //})
+    // TODO: Does not work, hangs on requiring fs-extra above
+    //.inTmpDir(function (dir) {
+    //  fs.copySync(path.join(__dirname, 'parent-pom.xml'), path.join(dir, 'pom.xml'));
+    //})
       .withPrompts({uiName: 'My New UI', bundleName: 'test.myapp', uiPath: '/test'})
       .on('end', done);
   });

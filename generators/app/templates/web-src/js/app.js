@@ -3,15 +3,16 @@
 const angular = require('angular');
 require('angular-touch');
 require('angular-resource');
-const pages = require('../components/pages/component.js');
-const colorPicker = require('../components/colorPicker/component.js');
+require('angular-route');
 
 angular
   .module('eshUiApp', [
     'ngRoute',
     'ngResource',
-    pages.name,
-    colorPicker.name
+    'ngTouch',
+    require('./app-routes').name,
+    require('./app-constants').name,
+    require('../components/pages/').name
   ])
 
   .run(($log) => {

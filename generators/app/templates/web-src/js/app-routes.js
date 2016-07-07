@@ -1,11 +1,14 @@
-'use strict';
+import angular from 'angular';
+
+const MODULE_ID = 'appRoutes';
+export {MODULE_ID as name};
 
 angular
-  .module('eshUiApp')
+  .module(MODULE_ID, [])
   .config(($routeProvider) => {
 
-    //$routeProvider.otherwise({
-    //  redirectTo: '/colorPicker'
-    //});
+    $routeProvider.otherwise({
+      redirectTo: '/colorPicker'
+    });
 
   });

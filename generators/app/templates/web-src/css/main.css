@@ -3,6 +3,22 @@ body {
   font-family: sans-serif;
   font-size: 18pt;
   color: white;
+  overflow: hidden;
+  padding: 20px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  font-size: .85em;
+  color: #999;
+  margin: .3em auto;
+  width: 100%;
+  text-align: center;
+}
+
+footer a {
+  color: inherit;
 }
 
 .Aligner {
@@ -36,9 +52,20 @@ body {
   text-align: right;
   color: black;
   list-style: none;
-  background: linear-gradient(to bottom right, hsla(0,0%,60%,1) 0%, hsla(0,0%,100%,0) 40%);
+  background: linear-gradient(to bottom right, hsla(0, 0%, 60%, 1) 0%, hsla(0, 0%, 100%, 0) 40%);
 }
 
-.dragger .h:after { content: ' H'; font-size: .7em; }
-.dragger .s:after { content: ' S'; font-size: .7em; }
-.dragger .l:after { content: ' L'; font-size: .7em; }
+.dragger .h:after {
+  content: ' H';
+  font-size: .7em;
+}
+
+.dragger .s:after {
+  content: ' S';
+  font-size: .7em;
+}
+
+.dragger .l:after {
+  content: ' L';
+  font-size: .7em;
+}
