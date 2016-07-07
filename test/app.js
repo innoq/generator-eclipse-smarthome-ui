@@ -1,18 +1,17 @@
 const path = require('path');
 const assert = require('yeoman-assert');
 const fs = require('fs');
-const helpers = require('yeoman-generator').test;
+const helpers = require('yeoman-test');
 
 describe('generator-eclipse-smarthome-ui:app', function () {
 
-  before(function (done) {
-    helpers.run(path.join(__dirname, '../generators/app'))
-    // TODO: Does not work, hangs on requiring fs-extra above
+  before(function () {
+    return helpers.run(path.join(__dirname, '../generators/app'))
       .inTmpDir(function (dir) {
         fs.copySync(path.join(__dirname, 'parent-pom.xml'), path.join(dir, 'pom.xml'));
       })
       .withPrompts({uiName: 'My New UI', bundleName: 'test.myapp', uiPath: '/test'})
-      .on('end', done);
+      .toPromise();
   });
 
   describe('creates', function () {
