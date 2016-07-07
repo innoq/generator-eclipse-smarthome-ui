@@ -1,5 +1,3 @@
-'use strict';
-
 const path = require('path');
 const gulp = require('gulp');
 const eslint = require('gulp-eslint');
@@ -11,7 +9,7 @@ const plumber = require('gulp-plumber');
 const coveralls = require('gulp-coveralls');
 
 gulp.task('static', function () {
-  return gulp.src('**/*.js')
+  return gulp.src(['**/*.js', '!templates/'])
     .pipe(excludeGitignore())
     .pipe(eslint('./.eslintrc'))
     .pipe(eslint.format())
