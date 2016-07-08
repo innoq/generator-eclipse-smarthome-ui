@@ -1,6 +1,6 @@
 const path = require('path');
 const assert = require('yeoman-assert');
-const fs = require('fs');
+const fs = require('fs-extra');
 const helpers = require('yeoman-test');
 
 describe('generator-eclipse-smarthome-ui:app', function () {
