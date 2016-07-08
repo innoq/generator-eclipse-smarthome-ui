@@ -7,8 +7,13 @@ const helpers = require('yeoman-test');
 
 describe('generator-eclipse-smarthome-ui:app', function () {
 
+  let pomGenerator = [
+    [helpers.createDummyGenerator(), 'eclipse-smarthome-ui:pom']
+  ];
+
   before(function () {
     return helpers.run(path.join(__dirname, '../generators/app'))
+      .withGenerators(pomGenerator)
       .inTmpDir(function (dir) {
         fs.copySync(path.join(__dirname, 'parent-pom.xml'), path.join(dir, 'pom.xml'));
       })
