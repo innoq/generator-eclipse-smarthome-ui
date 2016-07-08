@@ -27,17 +27,21 @@ describe('generator-eclipse-smarthome-ui:app', function () {
       assert.file([
         'test.myapp/.classpath',
         'test.myapp/.project',
-        'test.myapp/.gitignore'
+        'test.myapp/.gitignore',
+        'test.myapp/.editorconfig'
+      ]);
+    });
+
+    it('OSGi files', function () {
+      assert.file([
+        'test.myapp/OSGI-INF/myapp.xml',
+        'test.myapp/META-INF/MANIFEST.MF'
       ]);
       assert.fileContent('test.myapp/.project', /<name>test\.myapp</);
     });
 
     it('a java file', function () {
-      assert.file('test.myapp/src/main/java/test/myapp/internal/MyNewApp.java');
-    });
-
-    it('an osgi-inf config xml', function () {
-      assert.file('test.myapp/OSGI-INF/myapp.xml');
+      assert.file('test.myapp/src/main/java/test/myapp/internal/MynewUIApp.java');
     });
 
 
