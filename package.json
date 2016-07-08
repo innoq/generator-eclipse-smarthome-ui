@@ -47,12 +47,6 @@
     "yeoman-assert": "^2.2.1",
     "yeoman-test": "^1.4.0"
   },
-  "eslintConfig": {
-    "extends": "xo-space",
-    "env": {
-      "mocha": true
-    }
-  },
   "scripts": {
     "prepublish": "gulp prepublish",
     "test": "gulp"

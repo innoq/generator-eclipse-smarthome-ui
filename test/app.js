@@ -1,3 +1,5 @@
+'use strict';
+
 const path = require('path');
 const assert = require('yeoman-assert');
 const fs = require('fs-extra');
