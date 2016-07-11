@@ -1,6 +1,6 @@
 {
   "name": "generator-eclipse-smarthome-ui",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Eclipse SmartHome Userinterface generator",
   "homepage": "https://eclipse.org/smarthome",
   "repository": {
